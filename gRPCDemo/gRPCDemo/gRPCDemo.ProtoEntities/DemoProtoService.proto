@@ -1,0 +1,48 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "gRPCDemo.Entities";
+
+package gRPCDemo.Entities;
+
+// The greeting service definition.
+service DemoProtoService {
+  // Sends a greeting
+  rpc ClientServer (ClientServerRequest) returns (ClientServerReply);
+  rpc DoCLientStreaming(stream DoCLientStreamingRequest) returns (DoCLientStreamingResponse);
+  rpc DoServerStreaming(DoServerStreamingRequest) returns (stream DoServerStreamingResponse);
+  rpc DODuplexStreaming(stream DODuplexStreamingRequest) returns (stream DODuplexStreamingResponse);
+}
+
+// The request message containing the user's name.
+message ClientServerRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message ClientServerReply {
+  string message = 1;
+}
+
+message DoCLientStreamingRequest{
+	int32 number = 1;
+}
+
+message DoCLientStreamingResponse{
+	string message = 1;
+}
+
+message DoServerStreamingRequest{
+	string message = 1;
+}
+
+message DoServerStreamingResponse{
+	string message = 1;
+}
+
+message DODuplexStreamingRequest{
+	int32 number = 1;
+}
+
+message DODuplexStreamingResponse{
+	int32 number = 2;
+}
